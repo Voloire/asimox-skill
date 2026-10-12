@@ -1,0 +1,5 @@
+interface:
+  display_name: "asimoX"
+  short_description: "Design review of an agentic system against the twelve asimoX Pact controls"
+policy:
+  allow_implicit_invocation: false
