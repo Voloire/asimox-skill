@@ -9,7 +9,9 @@ function localConfig() {
   try {
     const path = join(homedir(), ".asimox", "config.json");
     if (!existsSync(path)) return {};
-    return JSON.parse(readFileSync(path, "utf8"));
+    let raw = readFileSync(path, "utf8");
+    if (raw.charCodeAt(0) === 0xfeff) raw = raw.slice(1);
+    return JSON.parse(raw);
   } catch {
     return {};
   }

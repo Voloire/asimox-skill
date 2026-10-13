@@ -27,7 +27,7 @@ try {
     $cfgDir = Join-Path $home ".asimox"
     New-Item -ItemType Directory -Force -Path $cfgDir | Out-Null
     $json = @{ api_key = $Key } | ConvertTo-Json
-    Set-Content -LiteralPath (Join-Path $cfgDir "config.json") -Value $json -Encoding utf8
+    [System.IO.File]::WriteAllText((Join-Path $cfgDir "config.json"), $json, (New-Object System.Text.UTF8Encoding($false)))
     Write-Host "asimoX skill installed for Claude Code and Codex. Key saved to $cfgDir\config.json"
   } else {
     Write-Host "asimoX skill installed for Claude Code and Codex."
